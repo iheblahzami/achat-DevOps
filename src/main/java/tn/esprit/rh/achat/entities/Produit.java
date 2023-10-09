@@ -24,6 +24,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Produit implements Serializable {
 //commit by iheb lahzami
+
+	//2nd commit
 	/**
 	 * 
 	 */
