@@ -1,10 +1,12 @@
 version: '3'
 
 services:
-  achat-backend:
-    image: achat-spring-app:latest
+  app:
+    build:
+      context: .
+      dockerfile: DockerFile
     ports:
-      - "8080:8080"
+      - "8090:8090"
     depends_on:
       - mysql
     environment:
