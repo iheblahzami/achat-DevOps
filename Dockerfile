@@ -5,10 +5,10 @@ FROM openjdk:11
 EXPOSE 8090
 
 # Copiez le jar de votre application dans le conteneur
-COPY target/achat-1.0.jar /app/achat-1.0.jar
+COPY target/achat.jar /app/achat.jar
 
 # Définissez le répertoire de travail
 WORKDIR /app
 
 # Commande pour exécuter votre application Spring Boot
-CMD ["java", "-jar", "achat-1.0.jar"]
+CMD ["java", "-jar", "achat.jar"]
