@@ -1,28 +1,40 @@
-version: '3'
+version: '3.8'
+networks:
+  mynetwork:
+    driver: bridge
 
 services:
-  # back-end spring-boot
+  #mysql-container
+  mysql-container:
+    image: mysql:5.7
+    networks:
+      - mynetwork
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: achatdb
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  # Spring Boot application service
   app:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "8089:8089"
+    networks:
+      - mynetwork
     depends_on:
-      - mysql
+      - mysql-container
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/achatdb?createDatabaseIfNotExist=true
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=rootpassword
-  # BD mysql
-  mysql:
-    image: mysql:5.7
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: achatdb
-    ports:
-      - "3306:3306"
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-container:3306/achatdb?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+      MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE: '*'
+      MANAGEMENT_ENDPOINT_PROMETHEUS_ENABLED: 'true'
+      MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED: 'true'
 
 volumes:
-    mysql-data:
-
+  mysql-data:
