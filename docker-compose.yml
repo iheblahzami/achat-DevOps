@@ -18,10 +18,10 @@ services:
       - mysql-data:/var/lib/mysql
 
   # Spring Boot application service
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  spring-app-container:
+    image: iheb49/achat:latest
+    container_name: spring-app-container
+    restart: on-failure
     ports:
       - "8089:8089"
     networks:
