@@ -36,5 +36,14 @@ services:
       MANAGEMENT_ENDPOINT_PROMETHEUS_ENABLED: 'true'
       MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED: 'true'
 
+
+
+  achat-frontend:
+    image: iheb49/achat-front:lts
+    ports:
+      - "8085:80"
+    depends_on:
+      - mysql-container
+
 volumes:
   mysql-data:
