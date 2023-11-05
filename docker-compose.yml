@@ -52,7 +52,7 @@ services:
     ports:
       - "8085:80"
     depends_on:
-      - mysql-container
+      - spring-app-container
     environment:
       PMA_HOST: mysql
       PMA_USER: root
