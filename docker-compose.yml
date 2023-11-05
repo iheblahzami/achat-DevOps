@@ -45,20 +45,33 @@ services:
 #    depends_on:
 #      - mysql-container
 
+#  achat-frontend:
+#    image: iheb49/achat-front:lts
+#    networks:
+#      - mynetwork
+#    ports:
+#      - "80:80"
+#
+#  # PHPMyAdmin service
+#  phpmyadmin:
+#    image: phpmyadmin/phpmyadmin
+#    networks:
+#      - mynetwork
+#    ports:
+#      - "8085:8085"
+#    depends_on:
+#      - mysql-container
+#    environment:
+#      PMA_HOST: mysql
+#      PMA_USER: root
+#      PMA_PASSWORD: root
+
+
+
   achat-frontend:
     image: iheb49/achat-front:lts
-    networks:
-      - mynetwork
     ports:
-      - "80:80"
-
-  # PHPMyAdmin service
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    networks:
-      - mynetwork
-    ports:
-      - "8080:8080"
+      - "8085:80"
     depends_on:
       - mysql-container
     environment:
