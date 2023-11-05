@@ -16,7 +16,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.times;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
- class OperateurServiceMock {
+ class OperateurServiceImplTest {
     @InjectMocks
     private OperateurServiceImpl operateurService;
 
@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
     }
 
     @Test
-    public void testAddOperateur() {
+     void testAddOperateur() {
         Operateur operateurToAdd = new Operateur(/* Initialize operateur data here */);
         when(operateurRepository.save(operateurToAdd)).thenReturn(operateurToAdd);
 
@@ -39,7 +39,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
     }
 
     @Test
-    public void testDeleteOperateur() {
+     void testDeleteOperateur() {
         // Provide an existing operateur ID to delete
         Long idToDelete = 1L; // Replace with the actual ID of an existing operateur in your database that you want to delete
 
@@ -52,7 +52,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 
     @Test
-    public void testUpdateOperateur() {
+     void testUpdateOperateur() {
         Operateur operateurToUpdate = new Operateur(/* Initialize operateur data here */);
         when(operateurRepository.save(operateurToUpdate)).thenReturn(operateurToUpdate);
 
@@ -62,7 +62,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
     }
 
     @Test
-    public void testRetrieveOperateur() {
+     void testRetrieveOperateur() {
 
         // Provide an existing operateur ID to retrieve
         Long idToRetrieve = 1L; // Replace with the actual ID of an existing operateur in your database
@@ -80,7 +80,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
     }
 
     @Test
-    public void testRetrieveOperateurNonExistent() {
+     void testRetrieveOperateurNonExistent() {
         // Provide a non-existent operateur ID
         Long nonExistentId = 9999L; // Replace with a non-existent ID that is not present in your database
 
