@@ -47,16 +47,10 @@ services:
 
   achat-frontend:
     image: iheb49/achat-front:lts
-    networks:
-      - mynetwork
     ports:
       - "8085:80"
     depends_on:
-      - spring-app-container
-    environment:
-      PMA_HOST: mysql
-      PMA_USER: root
-      PMA_PASSWORD: root
+      - mysql-container
 
 
 volumes:
